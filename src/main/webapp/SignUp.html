@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Signup & Login | Sanghavi Opticians</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+        <style>
+            :root {
+                --primary-color: #2c3e50;
+                --secondary-color: #e67e22;
+                --accent-color: #3498db;
+                --background-color: #ecf0f1;
+            }
+
+            body {
+                font-family: "Poppins", sans-serif;
+                background-color: var(--background-color);
+            }
+
+            .navbar {
+	background: linear-gradient(135deg, var(--primary-color),
+		var(--accent-color)) !important;
+	padding: 1rem 0;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+	color: white !important;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-size: 1.4rem;
+}
+
+.nav-link {
+	color: white !important;
+	font-weight: 500;
+	margin: 0 1.2rem;
+	padding: 0.5rem 1rem;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+	background-color: white; /*rgba(255, 255, 255, 0.1);*/
+	color: var(--primary-color) !important;
+	/*var(--secondary-color) !important;*/
+	transform: translateY(-2px);
+}
+
+
+            .auth-container {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                padding: 3rem;
+                max-width: 400px;
+                margin: auto;
+            }
+
+            .btn-custom {
+                background: var(--accent-color);
+                color: white;
+                transition: all 0.3s ease;
+            }
+
+            .btn-custom:hover {
+                background: var(--secondary-color);
+            }
+
+            footer {
+                background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+                color: white;
+                padding: 20px 0;
+                bottom: auto;
+                box-sizing: border-box;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                bottom: auto;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .ptext {
+                margin-top: 20px;
+                text-align: center;
+                color: white;
+            }
+
+            .hr {
+                color: white;
+                text-align: center;
+            }
+
+            .footer-section {
+                color: white;
+                margin-top: 20px;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .footer-sec {
+                color: white;
+                margin-top: 20px;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .toggle-link {
+                color: var(--secondary-color);
+                cursor: pointer;
+            }
+
+            .toggle-link:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+       <nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<a class="navbar-brand" href="#">Sanghavi Opticians</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="index.jsp"><i
+							class="fas fa-user me-2"></i>Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="product.jsp"><i
+							class="fas fa-glasses me-2"></i>Shop</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="cart.jsp"><i
+							class="fas fa-shopping-cart me-2"></i>Cart</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="fas fa-user-circle me-2"></i>Account</a></li>
+               -->
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+        <div class="container mt-5" >
+            <div class="auth-container" id="formContainer">
+                <h2 id="form-title-signup" class="text-center">Sign Up</h2>
+
+                <form action="sign.jsp" method="POST" onsubmit="return validateSignupForm()">
+                    <input type="text" name="firstName" class="form-control mb-3" placeholder="First Name" required />
+                    <input type="text" name="lastName" class="form-control mb-3" placeholder="Last Name" required />
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required /> 
+                    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required minlength="6" />
+                    <input type="tel" name="phoneNumber" class="form-control mb-3" placeholder="Phone Number" required pattern="\d{10}" title="Please enter a valid 10-digit phone number" />
+                    <input type="date" name="dateOfBirth" class="form-control mb-3" placeholder="Bith Date" required /> 
+                    <input type="text" name="address" class="form-control mb-3" placeholder="Address" required />
+                    <select name="role" class="form-control mb-3">
+                        <option value="User">User</option>
+                        <option value="Manager">Manager</option>
+                        <option value="SuperAdmin">SuperAdmin</option>
+                    </select>
+                    <button type="submit" class="btn btn-custom w-100">Signup</button>
+                </form>
+                <p class="text-center mt-3">
+                    Already have an account? <span class="toggle-link"><a href="sign.html">Login</a></span>
+                </p>
+            </div>
+        </div>
+
+	
+	<footer>
+		<div class="footer-section">
+			<h5>SANGHAVI OPTICIANS</h5>
+			<p>Your trusted partner for premium eyewear since 1990</p>
+		</div>
+		<div class="footer-section">
+			<h5>Quick Links</h5>
+			<ul class="list-unstyled">
+				<li><a href="aboutus.jsp" class="footer-section">About Us</a></li>
+				<li><a href="contact.jsp" class="footer-section">Contact Us</a></li>
+
+			</ul>
+		</div>
+		<div class="footer-section">
+			<h5>Connect With Us</h5>
+			<div>
+				<a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+				<a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+			</div>
+		</div>
+
+		<hr width="300%" align="center" class="hr">
+
+		<p align="center" class="ptext">&copy; 2024 Sanghavi Opticians.
+			All Rights Reserved</p>
+	</footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    
+</html>

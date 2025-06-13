@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Sanghavi Opticians</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #ff5722;
+            --accent-color: #2196f3;
+            --background-color: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+        }
+
+        .navbar {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color)) !important;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar ul li:hover {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            font-weight: 500;
+        }
+
+        .btn-custom {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-delete {
+            background: linear-gradient(to right, #f44336, #d32f2f);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+  <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">Sanghavi Opticians</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="admin.jsp">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="logout.jsp">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="d-flex">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <ul>
+                        <li onclick="window.location.href='admin.html'"><i class="fas fa-chart-line me-2"></i>Dashboard
+                        </li>
+                        <li onclick="window.location.href='manage.jsp'"><i class="fas fa-glasses me-2"></i>Manage
+                            Products</li>
+                        <li onclick="window.location.href='addProduct.html'"><i class="fas fa-plus-circle me-2"></i>Add
+                            Products</li>
+                        <li onclick="window.location.href='manageuser.jsp'"><i class="fas fa-users me-2"></i>Manage
+                            Users</li>
+
+                        <li onclick="window.location.href='coupons.html'"><i class="fas fa-ticket-alt me-2"></i> Apply
+                            Coupons</li>
+                        <li onclick="window.location.href='view_coupons.jsp'"><i
+                                class="fas fa-ticket-alt me-2"></i>Manage Coupons</li>
+                        <li onclick="window.location.href='addLens.jsp'"><i class="fas fa-plus-circle me-2"></i>Add Lens
+                        </li>
+                        <li onclick="window.location.href='manageLens.jsp'"><i class="fas fa-tag me-2"></i>Manage Lens
+                        </li>
+                        <li onclick="window.location.href='book.jsp'"><i class="fas fa-calendar-check me-2"></i>Book
+                        </li>
+                        <li onclick="window.location.href='cartAdmin.jsp'"><i class="fas fa-shopping-cart me-2"></i>Cart
+                            Management</li>
+                            <li onclick="window.location.href='adminWishlist.jsp'"><i class="fas fa-heart me-2"></i>Wishlist
+                     </li>
+                     <li onclick="window.location.href='order.jsp'"><i class="fas fa-heart me-2"></i>orders
+                     </li>
+                        </ul>
+
+ </div>
+        <div class="content">
+            <div id="dashboard" class="dashboard active">
+                <h2>Dashboard</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <h3><i class="fas fa-rupee-sign me-2"></i>Total Sales: ₹50,000</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <h3><i class="fas fa-shopping-bag me-2"></i>New Orders: 120</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="products" class="dashboard">
+                <h2>Manage Products</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Discount Price</th>
+                            <th>Stock</th>
+                            <th>Gender</th>
+                            <th>Style</th>
+                            <th>Category</th>
+                            <th>Tags</th>
+                            <th>Images</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Burnikk</td>
+                            <td>Premium Frame</td>
+                            <td>₹599</td>
+                            <td>₹499</td>
+                            <td>100</td>
+                            <td>Men</td>
+                            <td>Round Metal</td>
+                            <td>Eyeglasses</td>
+                            <td>Fashion, Trendy</td>
+                            <td><img src="j.png" width="50" height="50" alt="Product"></td>
+                            <td>
+                                <button class="btn-custom"><i class="fas fa-edit"></i></button>
+                                <button class="btn-custom btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="users" class="dashboard">
+                <h2>Manage Users</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>Admin</td>
+                            <td>Male</td>
+                            <td>+1234567890</td>
+                            <td>123 Main St</td>
+                            <td>
+                                <button class="btn-custom"><i class="fas fa-edit"></i></button>
+                                <button class="btn-custom btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="addProduct" class="dashboard">
+                <h2>Add Product</h2>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Product Name:</label>
+                        <input type="text" name="productName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description:</label>
+                        <textarea name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price:</label>
+                        <input type="number" name="price" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Discount Price:</label>
+                        <input type="number" name="discountPrice" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock:</label>
+                        <input type="number" name="stock" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender:</label>
+                        <select name="gender" class="form-select">
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Unisex">Unisex</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Style:</label>
+                        <input type="text" name="style" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category:</label>
+                        <input type="text" name="category" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tags:</label>
+                        <input type="text" name="tags" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image Upload:</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
+                    <button type="submit" class="btn-custom">Add Product</button>
+                </form>
+            </div>
+            <div id="orders" class="dashboard">
+                <h2>Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>John Doe</td>
+                            <td>₹1,200</td>
+                            <td><span class="badge bg-success">Shipped</span></td>
+                            <td>
+                                <button class="btn-custom"><i class="fas fa-eye"></i> View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="reviews" class="dashboard">
+                <h2>Manage Reviews</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Review ID</th>
+                            <th>Product</th>
+                            <th>User</th>
+                            <th>Rating</th>
+                            <th>Review</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Burnikk</td>
+                            <td>John Doe</td>
+                            <td>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </td>
+                            <td>Great product!</td>
+                            <td>2024-02-17</td>
+                            <td>
+                                <button class="btn-custom btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 Sanghavi Opticians. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.dashboard').forEach(div => div.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+        }
+    </script>
+</body>
+</html>
