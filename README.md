@@ -17,7 +17,7 @@ A dynamic web application that provides a complete solution for product manageme
 ---
 
 ## 🛠️ Technologies Used
-- **Frontend:** HTML, CSS, JavaScript
+- **Frontend:** JSP, HTML, CSS, JavaScript
 - **Backend:** Java (Servlets)
 - **Database:** MySQL
 
